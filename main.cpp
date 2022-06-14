@@ -1,6 +1,21 @@
 #include <iostream>
-#include <assert.h>
 #include "ColorCoding_TestFunction.hpp"
+#include "ColorCoding_Implementation.hpp"
+
+namespace TelCoColorCoder
+{
+    const char* MajorColorNames[] = {
+        "White", "Red", "Black", "Yellow", "Violet"
+    };
+    int numberOfMajorColors =
+        sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
+    const char* MinorColorNames[] = {
+        "Blue", "Orange", "Green", "Brown", "Slate"
+    };
+    int numberOfMinorColors =
+        sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
+
+}
 
 int main() {
     testNumberToPair(4, TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
@@ -8,6 +23,8 @@ int main() {
 
     testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
     testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
+
+    TelCoColorCoder::PrintReferenceManual();
 
     return 0;
 }
