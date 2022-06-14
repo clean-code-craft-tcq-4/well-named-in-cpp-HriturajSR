@@ -34,7 +34,7 @@ namespace TelCoColorCoder
         return major * numberOfMinorColors + minor + 1;
     }
 
-    void ColorPair::print25paircodeReferenceManual(void)
+    void ColorPair::Print25PairCodeReferenceManual(void)
     {
         int majorColorIterator, minorColorIterator;
         int pairNumber = 1;
