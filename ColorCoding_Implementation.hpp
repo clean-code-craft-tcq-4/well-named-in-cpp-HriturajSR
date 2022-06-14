@@ -21,12 +21,8 @@ namespace TelCoColorCoder
             ColorPair(MajorColor major, MinorColor minor):
                 majorColor(major), minorColor(minor)
             {}
-            MajorColor getMajor() {
-                return majorColor;
-            }
-            MinorColor getMinor() {
-                return minorColor;
-            }
+            MajorColor getMajor();
+            MinorColor getMinor();
             std::string ToString() {
                 std::string colorPairStr = MajorColorNames[majorColor];
                 colorPairStr += " ";
