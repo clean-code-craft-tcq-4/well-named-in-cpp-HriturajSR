@@ -2,39 +2,20 @@
 #include <iostream>
 #include "ColorCoding_Implementation.hpp"
 
-namespace TelCoColorCoder
-{
-    const char *MajorColorNames[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    int numberOfMajorColors = sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
-    const char *MinorColorNames[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    int numberOfMinorColors = sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
+TelCoColorCoder::ColorPair TelCoColorCoder::GetColorFromPairNumber(int pairNumber) {
+    int zeroBasedPairNumber = pairNumber - 1;
+    TelCoColorCoder::MajorColor majorColor = 
+        (TelCoColorCoder::MajorColor)(zeroBasedPairNumber / TelCoColorCoder::numberOfMinorColors);
+    TelCoColorCoder::MinorColor minorColor =
+        (TelCoColorCoder::MinorColor)(zeroBasedPairNumber % TelCoColorCoder::numberOfMinorColors);
+    return TelCoColorCoder::ColorPair(majorColor, minorColor);
+}
 
-    MajorColor ColorPair::getMajor() { return majorColor; }
+int TelCoColorCoder::GetPairNumberFromColor(TelCoColorCoder::MajorColor major, TelCoColorCoder::MinorColor minor) {
+    return major * TelCoColorCoder::numberOfMinorColors + minor + 1;
+}
 
-    MinorColor ColorPair::getMinor() { return minorColor; }
-
-    std::string ColorPair::ToString()
-    {
-        std::string colorPairStr = MajorColorNames[majorColor];
-        colorPairStr += " ";
-        colorPairStr += MinorColorNames[minorColor];
-        return colorPairStr;
-    }
-
-    ColorPair ColorPair::GetColorFromPairNumber(int pairNumber)
-    {
-        int zeroBasedPairNumber = pairNumber - 1;
-        MajorColor majorColor = (MajorColor)(zeroBasedPairNumber / numberOfMinorColors);
-        MinorColor minorColor = (MinorColor)(zeroBasedPairNumber % numberOfMinorColors);
-        return ColorPair(majorColor, minorColor);
-    }
-
-    int ColorPair::GetPairNumberFromColor(MajorColor major, MinorColor minor)
-    {
-        return major * numberOfMinorColors + minor + 1;
-    }
-
-   void TelCoColorCoder::Print25PairCodeReferenceManual(void)
+void TelCoColorCoder::PrintReferenceManual() 
     {
         int majorColorIterator, minorColorIterator;
         int pairNumber = 1;
