@@ -15,7 +15,7 @@ int TelCoColorCoder::GetPairNumberFromColor(TelCoColorCoder::MajorColor major, T
     return major * TelCoColorCoder::numberOfMinorColors + minor + 1;
 }
 
-void TelCoColorCoder::Print25PairCodeReferenceManual() 
+void TelCoColorCoder::ColorCodeManualImplementation() 
     {
         int majorColorIterator, minorColorIterator;
         int pairNumber = 1;
